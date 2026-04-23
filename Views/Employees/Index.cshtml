@@ -28,31 +28,36 @@
                 @if (!Model.Any())
                 {
                     <tr>
-                        <td colspan="5" class="text-center text-muted py-4">No employees yet. Add your first employee to start processing payroll.</td>
-                    </tr>
-                }
-                else
-                {
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                <div class="fw-semibold">@item.FirstName @item.LastName</div>
-                                <small class="text-muted">ID: @item.EmployeeId</small>
-                            </td>
-                            <td>@item.Position</td>
-                            <td>@item.Department</td>
-                            <td>@item.DailyRate.ToString("C")</td>
-                            <td class="text-end">
-                                <a asp-action="Details" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-outline-primary">Details</a>
-                                <a asp-action="Edit" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                <a asp-controller="Payrolls" asp-action="History" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-outline-success">Payroll</a>
-                                <a asp-action="Delete" asp-route-id="@item.EmployeeId" class="btn btn-sm btn-outline-danger">Delete</a>
-                            </td>
+                        <td colspan="5" class="text-center text-muted py-4">No employees yet. Add your first employee to
+                            start processing payroll.</td>
                         </tr>
                     }
-                }
-            </tbody>
-        </table>
+                else
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="fw-semibold">@item.FirstName @item.LastName</div>
+                                    <small class="text-muted">ID: @item.EmployeeId</small>
+                                </td>
+                                <td>@item.Position</td>
+                                <td>@item.Department</td>
+                                <td>@item.DailyRate.ToString("C")</td>
+                                <td class="text-end">
+                                    <a asp-action="Details" asp-route-id="@item.EmployeeId"
+                                       class="btn btn-sm btn-outline-primary">Details</a>
+                                    <a asp-action="Edit" asp-route-id="@item.EmployeeId"
+                                       class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <a asp-controller="Payrolls" asp-action="History" asp-route-id="@item.EmployeeId"
+                                       class="btn btn-sm btn-outline-success">Payroll</a>
+                                    <a asp-action="Delete" asp-route-id="@item.EmployeeId"
+                                       class="btn btn-sm btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>

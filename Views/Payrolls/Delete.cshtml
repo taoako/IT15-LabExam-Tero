@@ -10,7 +10,8 @@
 
     <dl class="row">
         <dt class="col-sm-3">Employee</dt>
-        <dd class="col-sm-9">@(Model.Employee == null ? "-" : $"{Model.Employee.FirstName} {Model.Employee.LastName}")</dd>
+        <dd class="col-sm-9">@(Model.Employee == null ? "-" : $"{Model.Employee.FirstName} {Model.Employee.LastName}")
+        </dd>
 
         <dt class="col-sm-3">Date</dt>
         <dd class="col-sm-9">@Model.Date.ToShortDateString()</dd>
