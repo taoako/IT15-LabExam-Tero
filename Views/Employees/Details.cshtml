@@ -1,0 +1,37 @@
+@model IT15_LabExam_Tero.Models.Employee
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<div class="page-card">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Employee Details</h2>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back</a>
+    </div>
+
+    <dl class="row mb-0">
+        <dt class="col-sm-3">Employee ID</dt>
+        <dd class="col-sm-9">@Model.EmployeeId</dd>
+
+        <dt class="col-sm-3">First Name</dt>
+        <dd class="col-sm-9">@Model.FirstName</dd>
+
+        <dt class="col-sm-3">Last Name</dt>
+        <dd class="col-sm-9">@Model.LastName</dd>
+
+        <dt class="col-sm-3">Position</dt>
+        <dd class="col-sm-9">@Model.Position</dd>
+
+        <dt class="col-sm-3">Department</dt>
+        <dd class="col-sm-9">@Model.Department</dd>
+
+        <dt class="col-sm-3">Daily Rate</dt>
+        <dd class="col-sm-9">@Model.DailyRate.ToString("C")</dd>
+    </dl>
+
+    <div class="mt-4 d-flex gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.EmployeeId" class="btn btn-primary">Edit Employee</a>
+        <a asp-controller="Payrolls" asp-action="History" asp-route-id="@Model.EmployeeId" class="btn btn-outline-primary">View Payroll History</a>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+@model IT15_LabExam_Tero.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete Employee";
+}
+
+<div class="page-card">
+    <h2 class="text-danger">Delete Employee</h2>
+    <p class="mb-4">This will also delete all payroll records for this employee.</p>
+
+    <dl class="row">
+        <dt class="col-sm-3">Employee</dt>
+        <dd class="col-sm-9">@Model.FirstName @Model.LastName</dd>
+
+        <dt class="col-sm-3">Position</dt>
+        <dd class="col-sm-9">@Model.Position</dd>
+
+        <dt class="col-sm-3">Department</dt>
+        <dd class="col-sm-9">@Model.Department</dd>
+
+        <dt class="col-sm-3">Daily Rate</dt>
+        <dd class="col-sm-9">@Model.DailyRate.ToString("C")</dd>
+    </dl>
+
+    <form asp-action="Delete" class="d-flex gap-2 mt-4">
+        <input type="hidden" asp-for="EmployeeId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+</div>

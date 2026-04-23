@@ -1,0 +1,67 @@
+@model IEnumerable<IT15_LabExam_Tero.Models.Payroll>
+
+@{
+    ViewData["Title"] = "Payroll";
+}
+
+<div class="page-card">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <div>
+            <h2 class="mb-1">Payroll Transactions</h2>
+            <p class="text-muted mb-0">Track salary processing, deductions, and net pay.</p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary">Add Payroll Record</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Date</th>
+                    <th>Days Worked</th>
+                    <th>Gross Pay</th>
+                    <th>Deduction</th>
+                    <th>Net Pay</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="7" class="text-center text-muted py-4">No payroll records yet. Add one to start tracking payroll history.</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (item.Employee != null)
+                                {
+                                    <span>@item.Employee.FirstName @item.Employee.LastName</span>
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
+                            </td>
+                            <td>@item.Date.ToShortDateString()</td>
+                            <td>@item.DaysWorked</td>
+                            <td>@item.GrossPay.ToString("C")</td>
+                            <td>@item.Deduction.ToString("C")</td>
+                            <td class="fw-semibold text-success">@item.NetPay.ToString("C")</td>
+                            <td class="text-end">
+                                <a asp-action="Details" asp-route-id="@item.PayrollId" class="btn btn-sm btn-outline-primary">Details</a>
+                                <a asp-action="Edit" asp-route-id="@item.PayrollId" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.PayrollId" class="btn btn-sm btn-outline-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

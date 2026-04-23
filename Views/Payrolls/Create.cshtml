@@ -1,0 +1,49 @@
+@model IT15_LabExam_Tero.Models.Payroll
+
+@{
+    ViewData["Title"] = "Create Payroll";
+}
+
+<div class="page-card form-shell">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Add Payroll Record</h2>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back</a>
+    </div>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+        <div class="mb-3">
+            <label asp-for="EmployeeId" class="form-label">Employee</label>
+            <select asp-for="EmployeeId" class="form-select" asp-items="ViewBag.EmployeeId"></select>
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label"></label>
+            <input asp-for="Date" class="form-control" type="date" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DaysWorked" class="form-label"></label>
+            <input asp-for="DaysWorked" class="form-control" type="number" min="0" step="0.01" />
+            <span asp-validation-for="DaysWorked" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Deduction" class="form-label"></label>
+            <input asp-for="Deduction" class="form-control" type="number" min="0" step="0.01" />
+            <span asp-validation-for="Deduction" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Process Payroll</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

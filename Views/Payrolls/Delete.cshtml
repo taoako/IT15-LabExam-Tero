@@ -1,0 +1,33 @@
+@model IT15_LabExam_Tero.Models.Payroll
+
+@{
+    ViewData["Title"] = "Delete Payroll";
+}
+
+<div class="page-card">
+    <h2 class="text-danger">Delete Payroll Record</h2>
+    <p class="mb-4">Please confirm deletion of this payroll transaction.</p>
+
+    <dl class="row">
+        <dt class="col-sm-3">Employee</dt>
+        <dd class="col-sm-9">@(Model.Employee == null ? "-" : $"{Model.Employee.FirstName} {Model.Employee.LastName}")</dd>
+
+        <dt class="col-sm-3">Date</dt>
+        <dd class="col-sm-9">@Model.Date.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Gross Pay</dt>
+        <dd class="col-sm-9">@Model.GrossPay.ToString("C")</dd>
+
+        <dt class="col-sm-3">Deduction</dt>
+        <dd class="col-sm-9">@Model.Deduction.ToString("C")</dd>
+
+        <dt class="col-sm-3">Net Pay</dt>
+        <dd class="col-sm-9 fw-semibold">@Model.NetPay.ToString("C")</dd>
+    </dl>
+
+    <form asp-action="Delete" class="d-flex gap-2 mt-4">
+        <input type="hidden" asp-for="PayrollId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+</div>

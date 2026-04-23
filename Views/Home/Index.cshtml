@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="page-card">
+    <h1 class="display-6 mb-2">Employee and Payroll Management</h1>
+    <p class="text-muted mb-4">Use the modules below to manage employee records and payroll transactions.</p>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="feature-card h-100">
+                <h5>Employees</h5>
+                <p class="mb-3">Add, edit, view, and delete employees with daily rates and department details.</p>
+                <a asp-controller="Employees" asp-action="Index" class="btn btn-primary">Open Employees</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="feature-card h-100">
+                <h5>Payroll</h5>
+                <p class="mb-3">Process payroll, compute gross/net pay automatically, and view transaction history.</p>
+                <a asp-controller="Payrolls" asp-action="Index" class="btn btn-primary">Open Payroll</a>
+            </div>
+        </div>
+    </div>
+</div>
